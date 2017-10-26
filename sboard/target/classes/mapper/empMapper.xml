@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="empMapper">
+	<insert id="insertEmp" parameterType="emp">
+		insert into emp values(#{empno},#{ename},'CLERK',7902, sysdate, 1500, 200, #{deptno})
+	</insert>
+	<update id="updateEmp" parameterType="emp">
+		update emp set deptno=#{deptno} where empno=#{empno}
+	</update>
+</mapper>
+
+
+
+
+
+
+

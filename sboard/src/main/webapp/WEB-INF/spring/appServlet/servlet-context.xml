@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<annotation-driven />
+	
+	<!-- 
+		\* : 모든 파일
+		\ : 내가 매핑하지 않은 그 나머지를 처리하는 톰캣의 default servlet 
+	 -->
+	<default-servlet-handler/>
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="com.icia.sboard" />
+	
+	<!-- 트랜잭션을 애노테이션 기반 처리 + 서비스 클래스에 걸겠다 
+			아래 설정을 root-context에 하면 junit는 성공하는데 실제 서버에서는 동작안함
+	-->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>			
+	
+</beans:beans>
+
+
+
+
+
+
